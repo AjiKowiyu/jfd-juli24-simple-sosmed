@@ -1,6 +1,9 @@
 module.exports =
 {
     index: function(req,res) {
-        res.render('feed/index')
+        let dataview = {
+            req: req
+        }
+        res.render('feed/index', dataview)
     }
 }
