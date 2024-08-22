@@ -9,6 +9,7 @@ const c_beranda = require('./controller/c_beranda')
 const c_auth    = require('./controller/c_auth')
 const cek_login = c_auth.cek_login
 const c_feed    = require('./controller/c_feed')
+const c_profil  = require('./controller/c_profil')
 
 
 // settingan session untuk login
@@ -40,6 +41,7 @@ app.get('/', c_beranda.index)
 app.get('/login', c_auth.form_login)
 app.post('/proses-login', c_auth.proses_login)
 app.get('/feed', cek_login, c_feed.index)
+app.get('/profil', cek_login, c_profil.index)
 
 
 app.listen(port, ()=>{
