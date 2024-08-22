@@ -1,0 +1,29 @@
+<%- include('../template/head-start') %>
+<%- include('../template/menu-atas') %>
+
+<div class="container pt-3">
+    <h1>Form Edit Profil</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="card bg-light">
+            <div class="card-body">
+                <form action="/profil/proses-update" method="post">
+                    <div class="row">
+                        <div class="col-lg-7 mb-3">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" name="form_namalengkap" class="form-control">
+                        </div>
+                        <div class="col-lg-7 mb-3">
+                            <label class="form-label">Bio</label>
+                            <textarea name="form_bio" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-save me-1"></i> Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../template/head-end') %>
