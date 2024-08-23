@@ -23,7 +23,10 @@
                             <%= req.session.user[0].bio %>
                         </p>
                         <p class="card-text">
-                            <small class="text-body-secondary">Last updated: <%= req.session.user[0].last_update %></small>
+                            <small class="text-body-secondary">
+                                Last updated: <%= moment(req.session.user[0].last_update).startOf('minute').fromNow() %>
+                                <%= moment(req.session.user[0].last_update).format('(DD MMM YYYY HH:mm)') %>
+                            </small>
                         </p>
                     </div>
                 </div>

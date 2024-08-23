@@ -10,11 +10,11 @@
                     <div class="row">
                         <div class="col-lg-7 mb-3">
                             <label class="form-label">Nama Lengkap</label>
-                            <input type="text" name="form_namalengkap" class="form-control">
+                            <input type="text" name="form_namalengkap" class="form-control" value="<%= req.session.user[0].nama_lengkap %>">
                         </div>
                         <div class="col-lg-7 mb-3">
                             <label class="form-label">Bio</label>
-                            <textarea name="form_bio" class="form-control"></textarea>
+                            <textarea name="form_bio" class="form-control"><%= req.session.user[0].bio %></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">

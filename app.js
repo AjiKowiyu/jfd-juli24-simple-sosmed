@@ -43,6 +43,7 @@ app.post('/proses-login', c_auth.proses_login)
 app.get('/feed', cek_login, c_feed.index)
 app.get('/profil', cek_login, c_profil.index)
 app.get('/profil/edit', cek_login, c_profil.form_edit)
+app.post('/profil/proses-update', cek_login, c_profil.proses_update)
 
 
 app.listen(port, ()=>{
