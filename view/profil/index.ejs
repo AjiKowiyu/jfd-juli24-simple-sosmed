@@ -14,11 +14,14 @@
         <div class="card mt-3 mb-3">
             <div class="row g-0">
                 <div class="col-md-4">
+                    <a href="/profil/edit-foto" class="btn btn-sm btn-primary float-end mt-3">
+                        <i class="fa-solid fa-edit"></i>
+                    </a>
                     <img src="/gambar/user-default.png" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <a href="/profil/edit" class="btn btn-primary float-end">
+                        <a href="/profil/edit" class="btn btn-sm btn-primary float-end">
                             <i class="fa-solid fa-edit"></i>
                         </a>
                         <h5 class="card-title"><%= req.session.user[0].nama_lengkap %></h5>

@@ -1,0 +1,21 @@
+<%- include('../template/head-start') %>
+<%- include('../template/menu-atas') %>
+
+<div class="container pt-3">
+    <h1>Ganti Foto</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="card bg-light">
+            <div class="card-body">
+                <form action="/profil/proses-update-foto" method="post" enctype="multipart/form-data">
+                    <input type="file" name="form_uploadfoto" accept=".png, .jpg, .jpeg, .svg, .webp">
+                    <br>
+                    <button type="submit" class="btn btn-primary mt-2">
+                        <i class="fa-solid fa-save me-1"></i> Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../template/head-end') %>
