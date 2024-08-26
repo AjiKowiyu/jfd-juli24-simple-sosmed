@@ -37,10 +37,47 @@ module.exports =
                 else if (media3.size > max_size) {
                     return res.redirect(`/posting?msg=Media 3 melebihi limit 3MB`)
                 } else {
+                    // ganti nama file asli
+                    let username        = req.session.user[0].username.replaceAll('.','-')
+                    let datetime        = moment().format('YYYYMMDD_HHmmss')
+
+                    let file1_name      = username + '_' + datetime + '_' + media1.name
+                    let file2_name      = username + '_' + datetime + '_' + media2.name
+                    let file3_name      = username + '_' + datetime + '_' + media3.name
+
+                    let folder1_simpan  = path.join(__dirname, '../public/feed/', file1_name)
+                    let folder2_simpan  = path.join(__dirname, '../public/feed/', file2_name)
+                    let folder3_simpan  = path.join(__dirname, '../public/feed/', file3_name)
+
+                    let pesan_upload    = ''
+                    media1.mv(folder1_simpan, async function(err) {
+                        if (err) {
+                            pesan_upload += `<br>Media 1 gagal upload`
+                        } else {
+                            pesan_upload += `<br>Media 1 berhasil upload`
+                        }
+                    })
+
+                    media2.mv(folder2_simpan, async function(err) {
+                        if (err) {
+                            pesan_upload += `<br>Media 2 gagal upload`
+                        } else {
+                            pesan_upload += `<br>Media 2 berhasil upload`
+                        }
+                    })
+
+                    media3.mv(folder3_simpan, async function(err) {
+                        if (err) {
+                            pesan_upload += `<br>Media 3 gagal upload`
+                        } else {
+                            pesan_upload += `<br>Media 3 berhasil upload`
+                        }
+                    })
+
                     // proses insert ke database
                     let insert = await m_post.insert(req)
                     if (insert.affectedRows > 0) {
-                        return res.redirect(`/feed?msg=berhasil kirim postingan`)
+                        return res.redirect(`/feed?msg=berhasil kirim postingan${pesan_upload}`)
                     }
                 }
             } catch (error) {

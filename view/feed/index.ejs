@@ -6,6 +6,12 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-7">
+                <% if (message) { %>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-info-circle me-2"></i><%- message %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <% } %>
                 <div class="card shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                     <div class="card-body">
