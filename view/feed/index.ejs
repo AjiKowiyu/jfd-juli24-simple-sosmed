@@ -12,19 +12,77 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <% } %>
-                <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+
+                <% for( let i=0; i < postingan.length; i++ ) { %>
+                    <%
+                        let carousel_active1 = ''
+                        let carousel_active2 = ''
+                        let carousel_active3 = ''
+
+                        if (postingan[i].file1) {
+                            carousel_active1 = 'active'
+                            carousel_active2 = ''
+                            carousel_active3 = ''
+                        }
+                        else if (postingan[i].file2) {
+                            carousel_active1 = ''
+                            carousel_active2 = 'active'
+                            carousel_active3 = ''
+                        }
+                        else if (postingan[i].file3) {
+                            carousel_active1 = ''
+                            carousel_active2 = ''
+                            carousel_active3 = 'active'
+                        }
+                    %>
+
+                    <div class="card shadow-sm mb-5">
+
+                        <div id="carouselExample<%= postingan[i].id %>" class="carousel slide">
+                            <div class="carousel-inner">
+                                <% if (postingan[i].file1) { %>
+                                    <div class="carousel-item <%= carousel_active1 %>">
+                                        <img src="<%= postingan[i].file1 %>" class="d-block w-100" height="350" style="object-fit: contain;" alt="...">
+                                    </div>
+                                <% } %>
+                                <% if (postingan[i].file2) { %>
+                                    <div class="carousel-item <%= carousel_active2 %>">
+                                        <img src="<%= postingan[i].file2 %>" class="d-block w-100" height="350" style="object-fit: contain;" alt="...">
+                                    </div>
+                                <% } %>
+                                <% if (postingan[i].file3) { %>
+                                    <div class="carousel-item <%= carousel_active3 %>">
+                                        <img src="<%= postingan[i].file3 %>" class="d-block w-100" height="350" style="object-fit: contain;" alt="...">
+                                    </div>
+                                <% } %>
                             </div>
-                            <small class="text-body-secondary">9 mins</small>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= postingan[i].id %>" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= postingan[i].id %>" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text"><%= postingan[i].caption %></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        <i class="fa-regular fa-thumbs-up"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        <i class="fa-regular fa-comment"></i>
+                                    </button>
+                                </div>
+                                <small class="text-body-secondary"><%= moment(postingan[i].created_at).startOf('minute').fromNow() %></small>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                <% } %>
             </div>
         </div>
     </div>

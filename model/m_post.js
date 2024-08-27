@@ -21,4 +21,13 @@ module.exports =
         ))
     },
 
+
+
+    get_all: function() {
+        return eksekusi( mysql.format(
+            `SELECT * FROM post
+            ORDER BY id DESC`
+        ))
+    }
+
 }
