@@ -38,7 +38,15 @@
 
                     <div class="card shadow-sm mb-5">
 
-                        <div id="carouselExample<%= postingan[i].id %>" class="carousel slide">
+                        <div>
+                            <img src="/upload/<%= postingan[i].foto %>" class="rounded-circle p-2" height="50" style="object-fit: cover;" alt="...">
+                            <b><%= postingan[i].username %></b>
+                            <span class="float-end p-3">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </span>
+                        </div>
+
+                        <div id="carouselExample<%= postingan[i].id %>" class="carousel slide bg-dark">
                             <div class="carousel-inner">
                                 <% if (postingan[i].file1) { %>
                                     <div class="carousel-item <%= carousel_active1 %>">
@@ -67,7 +75,7 @@
                         </div>
 
                         <div class="card-body">
-                            <p class="card-text"><%= postingan[i].caption %></p>
+                            <p class="card-text"><b><%= postingan[i].username %></b> <%= postingan[i].caption %></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">
@@ -87,6 +95,7 @@
         </div>
     </div>
 </div>
+
 
 <%- include('../template/head-end') %>
     

@@ -26,8 +26,12 @@ module.exports =
 
     get_all: function() {
         return eksekusi( mysql.format(
-            `SELECT * FROM post
-            ORDER BY id DESC`
+            `SELECT
+                p.*,
+                u.username, u.nama_lengkap, u.foto
+            FROM post AS p
+            LEFT JOIN user AS u ON u.id = p.created_by  
+            ORDER BY p.id DESC`
         ))
     }
 
