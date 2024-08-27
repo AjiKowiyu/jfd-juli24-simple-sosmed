@@ -6,12 +6,12 @@ moment.locale('id')
 module.exports =
 {
 
-    insert: function(req) {
+    insert: function(req, file1_name, file2_name, file3_name) {
         let data = {
             caption     : req.body.form_caption,
-            file1       : req.files.form_media1.name,
-            file2       : req.files.form_media2.name,
-            file3       : req.files.form_media3.name,
+            file1       : (file1_name) ? file1_name : null,
+            file2       : (file2_name) ? file2_name : null,
+            file3       : (file3_name) ? file3_name : null,
             created_at  : moment().format("YYYY-MM-DD HH:mm:ss"),
         }
         
