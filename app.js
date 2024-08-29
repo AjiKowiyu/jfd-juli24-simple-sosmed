@@ -43,6 +43,7 @@ app.set('views', './view')
 app.get('/', c_beranda.index)
 app.get('/login', c_auth.form_login)
 app.post('/proses-login', c_auth.proses_login)
+app.get('/logout', c_auth.proses_logout)
 app.get('/feed', cek_login, c_feed.index)
 
 app.get('/profil', cek_login, c_profil.index)
